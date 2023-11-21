@@ -1,8 +1,9 @@
-import * as THREE from "../node_modules/three/src/Three.js";
+// import * as THREE from "../node_modules/three/src/Three.js";
 // import { GLTFLoader } from "../node_modules/three/examples/jsm/loaders/GLTFLoader.js";
 
 // import * as THREE from "three";
 // import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader.js";
+import * as THREE from "https://cdnjs.cloudflare.com/ajax/libs/three.js/0.158.0/three.module.js";
 
 async function ActivateAR() {
   const canvas = document.createElement("canvas");
@@ -45,7 +46,7 @@ async function ActivateAR() {
   });
 
   //Creating the resticle to indicate the hit point.
-  const geometry = new THREE.RingGeometry(0.01, 0.1, 32);
+  const geometry = new THREE.RingGeometry(0.03, 0.1, 32);
   geometry.rotateX(-Math.PI / 2);
   geometry.scale(0.25, 0.25, 0.25);
 
