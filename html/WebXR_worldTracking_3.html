@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!--Bootstrap & jQuery CDN-->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <!--Font Awesome CDN-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+        integrity="sha512-SfTiTlX6kk+qitfevl/7LibUOeJWlt9rbyDn92a1DqWOw9vWG2MFoays0sgObmWazO5BQPiFucnnEAjpAB+/Sw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <!--Three.js CDN & scripts-->
+    <script defer type="module" src="../js/webXR_worldTracking_3-1.js"></script>
+    <!--Custom CSS-->
+    <link rel="stylesheet" href="../css/webXR_worldTracking_3.css">
+    <!--<link rel="stylesheet" href="../css/webxr_hit_test_point_tracking.css">-->
+    <title>View in User Space</title>
+</head>
+
+<body>
+    <a href="./webXR_inline_AR_3.html" class="btn btn-danger btn-sm" role="button"><i class="fa fa-chevron-left"
+            style="color: black; padding-right: 7px;"></i>GO BACK!</a>
+    <button id="start-ar" class="btn btn-primary btn-sm">View in your Space</button>
+
+    <button id="object-placement" class="btn btn-info btn-sm">Place Object</button>
+    <button id="enable-tracking" class="btn btn-info btn-sm">Enable Tracking</button>
+    <div class="lightestimate-depthsensing">
+        <p id="content-intensity"></p>
+        <p id="content-direction"></p>
+        <p id="directional-light-value"></p>
+        <p id="directional-light-vector3"></p>
+        <p id="depth-info"></p>
+        <p id="depth-in-meters"></p>
+        <p id="depth-info-matrix-dim"></p>
+    </div>
+</body>
+
+</html>
