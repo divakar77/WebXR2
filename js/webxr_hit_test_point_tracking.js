@@ -1,7 +1,8 @@
 // import * as THREE from "three";
 // import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader.js";
 
-import * as THREE from "../node_modules/three/src/Three.js";
+// import * as THREE from "../node_modules/three/src/Three.js";
+import * as THREE from "../src/Three.js";
 
 async function ActivateAR() {
   const canvas = document.createElement("canvas");
