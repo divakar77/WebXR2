@@ -1,0 +1,58 @@
+body {
+  max-width: fit-content;
+  max-height: fit-content;
+}
+
+.distance-display {
+  position: absolute;
+  top: 12%;
+  left: 17%;
+  border: 2px solid;
+  border-color: grey;
+  border-radius: 10px;
+  max-width: fit-content;
+  background-color: aliceblue;
+}
+
+.hit-point-text {
+  position: absolute;
+  top: 2%;
+  left: 18%;
+  border: 2px solid;
+  border-color: grey;
+  border-radius: 10px;
+  max-width: fit-content;
+  background-color: aliceblue;
+}
+
+.card-title {
+  text-align: center;
+  font-size: medium;
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande", "Lucida Sans", Arial, sans-serif;
+  color: firebrick;
+}
+
+.card-text {
+  text-align: center;
+  color: rgb(209, 63, 63);
+  font-weight: 700;
+  margin-top: 2%;
+}
+
+#startAR {
+  position: absolute;
+  bottom: 3%;
+  left: 15%;
+}
+
+#markPoint {
+  position: absolute;
+  bottom: 3%;
+  left: 40%;
+}
+
+#distance {
+  position: absolute;
+  bottom: 3%;
+  left: 70%;
+}
