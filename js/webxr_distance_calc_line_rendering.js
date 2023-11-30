@@ -29,7 +29,8 @@ async function ActivateAR() {
   renderer.xr.enabled = true;
 
   //Camera Creation
-  const camera = new THREE.PerspectiveCamera();
+  //const camera = new THREE.PerspectiveCamera();
+  const camera = new THREE.PerspectiveCamera(70, window.innerWidth / window.innerHeight, 0.1, 2000);
   camera.matrixAutoUpdate = false;
 
   //WebXR session creation
