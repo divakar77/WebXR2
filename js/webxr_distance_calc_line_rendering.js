@@ -29,7 +29,7 @@ async function ActivateAR() {
   renderer.xr.enabled = true;
 
   //Camera Creation
-  //const camera = new THREE.PerspectiveCamera();
+  //  const camera = new THREE.PerspectiveCamera();
   const camera = new THREE.PerspectiveCamera(70, window.innerWidth / window.innerHeight, 0.1, 2000);
   camera.matrixAutoUpdate = false;
 
@@ -51,7 +51,7 @@ async function ActivateAR() {
   });
 
   //Creating the resticle to indicate the hit point.
-  const geometry = new THREE.RingGeometry(0.02, 0.05, 32);
+  const geometry = new THREE.RingGeometry(0.02, 0.04, 32);
   geometry.rotateX(-Math.PI / 2);
   geometry.scale(0.25, 0.25, 0.25);
 
@@ -62,14 +62,26 @@ async function ActivateAR() {
   reticle.visible = false;
   scene.add(reticle);
 
+  //Marked Hit-point indicators
+  const indicatorGeometery = new THREE.RingGeometry(0, 0.02, 32);
+  indicatorGeometery.rotateX(-Math.PI / 2);
+  indicatorGeometery.scale(0.2, 0.2, 0.2);
+
+  const indicatorMaterial = new THREE.MeshBasicMaterial({ color: 0x11cc11 });
+
+  const indicator = new THREE.Mesh(indicatorGeometery, indicatorMaterial);
+
   //Drawing Line
-  const lineMaterial = new THREE.LineBasicMaterial({ color: 0xff0000, linewidth: 8 });
-  //  const lineMaterial = new LineMaterial({ color: 0xff00ff, linewidth: 5, vertexColors: true, alphaToCoverage: true, dashed: false });
+  const lineMaterial = new THREE.LineBasicMaterial({ color: 0x222222, linewidth: 8 });
   const points = [];
-  let lineGeometry;
 
   document.querySelector("#markPoint").addEventListener("click", () => {
     markedPositions.push(new THREE.Vector2(reticle.position.x, reticle.position.z));
+
+    let indicatorMarker = indicator.clone();
+    indicatorMarker.position.copy(reticle.position);
+    scene.add(indicatorMarker);
+
     points.push(new THREE.Vector3(reticle.position.x, reticle.position.y, reticle.position.z));
 
     if (markedPositions.length >= maxMarkedPoints) {
@@ -116,6 +128,8 @@ async function ActivateAR() {
       if (hitTestResults.length > 0) {
         const hitPose = hitTestResults[0].getPose(referenceSpace);
 
+        document.getElementById("initial-text").style.display = "none"; //Hide the message when tracking is stable and hit test is working.
+
         reticle.visible = true;
         reticle.position.set(hitPose.transform.position.x, hitPose.transform.position.y, hitPose.transform.position.z);
         // reticle.matrix.fromArray(hitPose.transform.matrix);
@@ -124,8 +138,15 @@ async function ActivateAR() {
         document.getElementById("x-coordinate").innerHTML = `${hitPose.transform.position.x.toFixed(3)}`;
         document.getElementById("y-coordinate").innerHTML = `${hitPose.transform.position.y.toFixed(3)}`;
         document.getElementById("z-coordinate").innerHTML = `${hitPose.transform.position.z.toFixed(3)}`;
+      } else {
+        document.getElementById("initial-text").style.display = "block"; //show default message when tracking is lost/loading and hit test isn't working.
+        //console.log("no hit results generated");
       }
+
       renderer.render(scene, camera);
+    } else {
+      document.getElementById("initial-text").style.display = "block";
+      //console.log("No Pose Dectected");
     }
   };
   session.requestAnimationFrame(onXRFrame);
