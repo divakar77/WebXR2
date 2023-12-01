@@ -1,10 +1,10 @@
-//import * as THREE from "three";
+import * as THREE from "three";
 //import { Line2 } from "three/examples/jsm/lines/Line2";
 //import { LineGeometry } from "three/examples/jsm/lines/LineGeometry";
 //import { LineMaterial } from "three/examples/jsm/lines/LineMaterial";
 //import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader.js";
 
-import * as THREE from "https://cdnjs.cloudflare.com/ajax/libs/three.js/0.158.0/three.module.js";
+//import * as THREE from "https://cdnjs.cloudflare.com/ajax/libs/three.js/0.158.0/three.module.js";
 
 const maxMarkedPoints = 2;
 const markedPositions = [];
@@ -63,16 +63,16 @@ async function ActivateAR() {
   scene.add(reticle);
 
   //Marked Hit-point indicators
-  const indicatorGeometery = new THREE.RingGeometry(0, 0.02, 32);
+  const indicatorGeometery = new THREE.RingGeometry(0, 0.015, 32);
   indicatorGeometery.rotateX(-Math.PI / 2);
   indicatorGeometery.scale(0.2, 0.2, 0.2);
 
-  const indicatorMaterial = new THREE.MeshBasicMaterial({ color: 0x11cc11 });
+  const indicatorMaterial = new THREE.MeshBasicMaterial({ color: 0x118811 });
 
   const indicator = new THREE.Mesh(indicatorGeometery, indicatorMaterial);
 
   //Drawing Line
-  const lineMaterial = new THREE.LineBasicMaterial({ color: 0x222222, linewidth: 8 });
+  const lineMaterial = new THREE.LineBasicMaterial({ color: 0x444444, linewidth: 8 });
   const points = [];
 
   document.querySelector("#markPoint").addEventListener("click", () => {
@@ -145,7 +145,7 @@ async function ActivateAR() {
 
       renderer.render(scene, camera);
     } else {
-      document.getElementById("initial-text").style.display = "block";
+      document.getElementById("initial-text").style.display = "block"; //show default message when tracking is lost/loading and hit test isn't working.
       //console.log("No Pose Dectected");
     }
   };
