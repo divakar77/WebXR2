@@ -23,8 +23,6 @@ async function ActivateAR() {
   //renderer.setPixelRatio(window.devicePixelRatio);
   renderer.xr.enabled = true;
 
-  console.log(window.innerWidth);
-
   //Camera Creation
   const camera = new THREE.PerspectiveCamera();
   //const camera = new THREE.PerspectiveCamera(70, window.innerWidth / window.innerHeight, 0.1, 2000);
@@ -103,6 +101,9 @@ async function ActivateAR() {
 
       renderer.setSize(viewport.width, viewport.height);
 
+      console.log("Viewport width: "+viewport.width);
+      console.log("Device Window Width: "+window.innerWidth);
+      
       camera.matrix.fromArray(view.transform.matrix);
       camera.projectionMatrix.fromArray(view.projectionMatrix);
       camera.updateMatrixWorld(true);
