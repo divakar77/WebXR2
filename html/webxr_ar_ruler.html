@@ -19,6 +19,15 @@
         crossorigin="anonymous" referrerpolicy="no-referrer" />
     <!--Custom CSS-->
     <link rel="stylesheet" href="../css/webxr_ar_ruler.css">
+    <!--Importmap script-->
+    <script type="importmap">
+        {
+            "imports": {
+                "three": "../node_modules/three/build/three.module.js",
+                "three/addons/": "../node_modules/three/examples/jsm/"
+            }
+        }
+    </script>
     <title>WebXR AR Ruler</title>
 </head>
 
@@ -42,13 +51,5 @@
     <div id="css2dRenderer"></div>
     <button id="startAR" class="btn btn-primary btn-sm">Start AR</button>
     <button id="markPoint" class="btn btn-dark btn-sm">Mark Point</button>
-    <script type="importmap">
-        {
-            "imports": {
-                "three": "../node_modules/three/build/three.module.js",
-                "three/addons/": "../node_modules/three/examples/jsm/"
-            }
-        }
-    </script>
     <script type="module" src="../js/webxr_ar_ruler_2.js"></script>
 </body>
